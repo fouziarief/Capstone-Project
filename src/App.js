@@ -14,11 +14,11 @@ function App() {
       <div className="App">
         <NavBar />
         <Switch>
-          <Route exact path="/ " component={Home} />
-          <Route exact path="/ Recipe" component={Recipe} />
-          <Route exact path="/ Signup" component={Signup} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Recipe" component={Recipe} />
+          <Route exact path="/Signup" component={Signup} />
         </Switch>
-        <Home />
+
         {/* <Recipe /> */}
         {/* <Signup /> */}
       </div>

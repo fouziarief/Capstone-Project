@@ -1,10 +1,10 @@
 import React from "react";
 
-function RecipeDisplay({ title, image }) {
+function RecipeDisplay(props) {
   return (
     <div className="recipeDisplay">
-      <img src={["recipe"]["image"]} />
-      <p>{title["recipe"]["label"]}</p>;<p>Ingredients</p>
+      <img src={props.recipe.image} />
+      <p>{props.recipe.title}</p>;<p>Ingredients</p>
     </div>
   );
 }

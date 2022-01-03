@@ -5,18 +5,19 @@ import RecipeDisplay from "../RecipeDisplay";
 function Home() {
   const [search, setSearch] = useState(" ");
   // const [query,setQuery]=useState([])
-  const [recipe, setRecipe] = useState([]);
+  const [recipes, setRecipes] = useState();
 
   const app_id = "b26df944";
   const app_key = "48b4a9f26d11585ffcf596f7ee5e58df";
 
-  // var url = `https://api.edamam.com/search?q=${search}&app_id=${app_id}&app_key=${app_key}&&health=alcohol-free`;
+  var url = `https://api.edamam.com/search?q=${search}&app_id=${app_id}&app_key=${app_key}&&health=alcohol-free`;
 
-  // const getRecipes = async () => {
-  //   const result = await Axios.get(url);
-  //   // setRecipe(result.data.hits);
-  //   console.log(result.data);
-  // };
+  const getRecipes = async () => {
+    const result = await Axios.get(url);
+    setRecipes(result.data.hits);
+    console.log(result.data.hits);
+    console.log(recipes);
+  };
 
   const search_handler = (e) => {
     e.preventDefault();
@@ -45,8 +46,12 @@ function Home() {
         </button>
       </form>
       <div className="recipe">
-        {recipe !== [] &&
-          recipe.map((getRecipe) => <h2>[getRecipe.recipe.label]</h2>)}
+        {recipes &&
+          recipes.map((r) => (
+            <h2>
+              <RecipeDisplay recipe={r.recipe} />
+            </h2>
+          ))}
       </div>
     </div>
   );
